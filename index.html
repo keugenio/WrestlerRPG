@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>WreslterRPG: The Game</title>
+
+  <!-- Bootstrap File -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="assets/css/reset.css">  
+  <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+  <link href="https://fonts.googleapis.com/css?family=Rammetto+One" rel="stylesheet">  
+</head>
+<body>
+
+  <!-- Main Window -->
+  <div class="container">
+
+    <div class="">
+      <h1 class="text-center header-title"><strong>WrestleRPG: The Game!</strong></h1>     
+    </div>
+
+    <div class="row">
+      <!-- Left Panel -->
+      <div class="col-md-4 col-lg-4">
+        <div class="row">
+          <!-- Available Player Area (All Available Players) -->
+          <div class="panel panel-info display-area bg-warning">
+            <div class="panel-heading">
+              <h3 class="title">Available Players</h3>
+            </div>
+            <div class="panel-body" id="availablePlayersBin">
+            </div><!-- panel-body -->
+          </div> <!-- panel -->
+        </div><!-- row -->
+        <div class="row">
+          <!-- Available Opponents Area (All Available Opponents)-->
+          <div class="panel panel-danger display-area bg-warning">
+            <div class="panel-heading">
+              <h3 class="title">Available Opponents</h3>
+            </div><!-- panel-heading -->
+            <div class="panel-body" id="availableOpponentsBin">
+            </div><!-- panel-body -->       
+          </div><!-- panel -->
+        </div><!-- row --> 
+      </div><!-- col -->
+
+      <!-- Right Panel (Game Area)-->
+      <div class="col-md-8 col-lg-8" style="padding: 0;">
+        <div class="panel panel-info display-area bg-warning">
+          <div class="panel-heading">
+            <div style="display: inline-block;" class="center-block">
+              <h3 class="title">Game Area</h3>
+            </div>
+            <div style="display: inline-block;" class="pull-right"  id="infoBtn">
+              <a href="#"><img src="info.svg" class="infoIcon"></a>
+            </div>              
+            <div style="display: inline-block; margin: 0 5px;" class="pull-right">
+              <h3 class="title" id="gamesPlayed">Games:</h3>
+            </div>              
+            <div style="display: inline-block; margin: 0 5px;" class="pull-right">
+              <h3 class="title" id="score">Score:</h3>
+            </div>                            
+          </div><!-- panel heading -->
+          <div class="panel-body table" id="wrestlingRing">
+            <table class="table">
+              <tr>
+                <td>
+                  <div id="player-character" class="center-block"></div>
+                  </div>
+                </td>
+                <td style="vertical-align: middle">
+                  <div id="versus">
+                    VS.
+                  </div>
+                    <button class="btn btn-danger center-block" id="strikeBtn">Strike!</button>                   
+                    <button class="btn btn-danger center-block" id="resetBtn">Reset</button>                 
+                </td>
+                <td>
+                  <div id="opponent-character" class="center-block"></div>
+                </td>
+              </tr>
+              <tr>
+                <td colspan=3><div id="messageBoard" class="clearfix"></div></td>
+              </tr>
+            </table>               
+          </div><!-- panel body -->            
+        </div><!-- panel -->  
+      </div><!-- column -->
+    </div> <!-- row -->
+  </div> <!-- container -->
+
+  <!-- instructions -->
+  <div class="container">
+    <div class="panel" id="info">
+      <div class="info-heading panel-heading">
+        <div style="display: inline-block; margin: 0 15px;">
+          <h3 class="text-center">How to Play WrestleRPG </h3>
+        </div>
+        <div style="display: inline-block;" class="pull-right"  id="closeBtn">
+            <a href="#" style="color: white">X</a>
+        </div>
+      </div> <!-- panel-heading -->     
+      <div class="panel-body">
+        <ol>
+          <li>When the game starts, the player will choose a character by clicking on the wrestler's picture. The player will fight as that wrestler for the rest of the game.</li>
+
+          <li>The player must then defeat all of the remaining wrestlers. Opponents are disabled once defeated.</li>
+
+          <li>The player chooses an opponent by clicking on an wrestler's picture from the Available Player's Bin.  Once the player selects an opponent from the Available Opponent's Bin, that opponent is moved to the Game Area.</li>
+
+          <li>The player will now be able to click the Strike button to genererate random moves</li>
+          
+          <li>Whenever a player gernerates moves, their character damages the opponent. The opponent will lose HP (health points). These points are displayed at the bottom of each character's picture. </li>
+
+          <li>The opponent character will instantly counter the attack. When that happens, the player's wrestler will lose some of their HP.</li>
+
+          <li>The player will keep hitting the attack button in an effort to defeat their opponent.</li>
+
+          <li> When the opponents's HP is reduced to zero or below, the opponent is disabled and placed back into
+          the opponent area. The player character can now choose a new opponent.</li>
+
+          <li>The player wins the game by defeating all opponent wrestlers. The player loses the game the game if their wrestler's HP falls to zero or below.</li>
+
+          <li>Each character in the game has 3 attributes: Health Points, Attack Power and Counter Attack Power.</li>
+
+          <li>Each time the player attacks, their character's Attack Power increases by its base Attack Power. For example, if the base Attack Power is 6, each attack will increase the Attack Power by 6 (12, 18, 24, 30 and so on).</li>
+
+          <li>The enemy character only has Counter Attack Power. </li>
+          
+          <li>Unlike the player's Attack Points, Counter Attack Power never changes.</li>
+        </ul>
+      </div> <!-- panel-body -->
+    </div> <!-- panel -->
+  </div><!-- container -->
+  <script src="assets/js/wrestler.js"></script> 
+<audio id="wrestler0Audio" src="hulkhogan.mp3"></audio>
+<audio id="wrestler1Audio" src="ultimatewarrior.mp3"></audio>
+<audio id="wrestler2Audio" src="therock.mp3"></audio>
+<audio id="wrestler3Audio" src="machoman.mp3"></audio>
+<audio id="wrestler4Audio" src="ricflair.mp3"></audio>
+
+</body>
+</html>
